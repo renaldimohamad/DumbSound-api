@@ -36,7 +36,11 @@ export const register = async (user: IUserRegister): Promise<User | string> => {
    try {
       const existUser = await db.user.findFirst({
          where: {
-            email: user.email,
+            OR: [
+               {
+               email: user.email,
+               fullName: user.email,
+            }]
          },
       })
 
