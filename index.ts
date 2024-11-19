@@ -2,16 +2,16 @@ import express from "express"
 import dotenv from "dotenv"
 import route from "./src/routes"
 import db from "./src/libs/db"
+import cors from "cors"
 
-// initialize dotenv
 dotenv.config()
 
 const app = express()
-const port = process.env.PORT || 5000 // ini nama key nya key yang kita simpan di dalam file .env
+const port = process.env.PORT || 5000
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-//routes
+app.use(cors())
 app.get("/", (req: express.Request, res: express.Response) => {
     res.send('Hello World!')
 })
