@@ -14,12 +14,12 @@ datasource db {
 }
 
 model User {
-  id Int @id @default(autoincrement())
-  email String
+  id       Int      @id @default(autoincrement())
+  email    String
   fullName String?
   password String
-  gender String
-  phone String
-  addres String
+  gender   String
+  phone    String
+  address   String
   createAt DateTime @default(now())
 }
