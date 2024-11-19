@@ -4,5 +4,5 @@ export interface IUserRegister {
     fullName: string;
     gender: string;
     phone: string;
-    addres: string;
+    address: string;
 }
