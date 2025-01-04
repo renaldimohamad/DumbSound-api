@@ -1,4 +1,0 @@
-middlewares itu adalah sebuah function penolak yang bisa yang punya akses ke request dan ke respon
-
-
-next function dari express 
