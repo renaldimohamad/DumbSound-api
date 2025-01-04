@@ -17,7 +17,7 @@ export const login = async (email: string, password: string) => {
       }
 
       const isMatch = await bcrypt.compare(password, existUser.password)
-      
+
       if (!isMatch) {
          return "password is wrong"
       }
@@ -38,9 +38,10 @@ export const register = async (user: IUserRegister): Promise<User | string> => {
          where: {
             OR: [
                {
-               email: user.email,
-               fullName: user.email,
-            }]
+                  email: user.email,
+                  fullName: user.email,
+               },
+            ],
          },
       })
 
@@ -54,7 +55,6 @@ export const register = async (user: IUserRegister): Promise<User | string> => {
       const newUser = await db.user.create({
          data: user,
       })
-
       return newUser
    } catch (error) {
       console.log("🚀 ~ register ~ error:", error)
