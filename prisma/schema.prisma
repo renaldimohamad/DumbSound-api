@@ -20,6 +20,52 @@ model User {
   password String
   gender   String
   phone    String
-  address   String
+  address  String
   createAt DateTime @default(now())
+  updateAt DateTime @updatedAt
+
+  payments Payment[]
+
+  @@map("users")
+  @@index([email])
+}
+
+model Music {
+  id        Int     @id @default(autoincrement())
+  artist    Int
+  title     String
+  year      String
+  thumbnail String
+  attache   String
+  artistId  Int?
+  Artist    Artist? @relation(fields: [artistId], references: [id])
+
+  @@map("musics")
+  @@index([title])
+}
+
+model Artist {
+  id        Int    @id @default(autoincrement())
+  name      String
+  genre     String
+  debutYear Int
+
+  musics Music[]
+
+  @@map("artists")
+  @@index([name])
+}
+
+model Payment {
+  id        Int    @id @default(autoincrement())
+  userId    Int
+  startDate String
+  dueDate   String
+  attache   String
+  status    String
+
+  User User @relation(fields: [userId], references: [id])
+  
+  @@map("payments")
+  @@index([userId])
 }
